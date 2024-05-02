@@ -91,3 +91,4 @@ CLASS /pyxs/cl_accounting_documents DEFINITION
         Parceiro                       TYPE ty_Parceiro,
         TipoLancamentoERP              TYPE string,
       END OF ty_main.
+      METHODS: main_process.

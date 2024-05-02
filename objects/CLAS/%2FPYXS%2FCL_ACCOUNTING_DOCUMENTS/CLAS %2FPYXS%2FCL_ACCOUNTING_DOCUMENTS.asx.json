@@ -83,6 +83,13 @@
   [
    {
     "CLSNAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS",
+    "CMPNAME":"MAIN_PROCESS",
+    "CMPTYPE":1,
+    "MTDTYPE":0,
+    "MTDTYPE2":0
+   },
+   {
+    "CLSNAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS",
     "CMPNAME":"TY_CENTROCUSTO",
     "CMPTYPE":3,
     "MTDTYPE":0,
@@ -164,6 +171,64 @@
   "table":"SEOCOMPODF",
   "data":
   [
+   {
+    "CLSNAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS",
+    "CMPNAME":"MAIN_PROCESS",
+    "VERSION":1,
+    "ALIAS":"",
+    "REDEFIN":"",
+    "EXPOSURE":2,
+    "STATE":1,
+    "EDITORDER":1,
+    "LOCKED":"",
+    "DISPID":0,
+    "R3RELEASE":"795",
+    "AUTHOR":"",
+    "CREATEDON":"2024-05-02",
+    "CHANGEDBY":"",
+    "CHANGEDON":"0000-00-00",
+    "MTDDECLTYP":0,
+    "MTDABSTRCT":"",
+    "MTDFINAL":"",
+    "DSRNOTEOM":"",
+    "EDTX":"",
+    "MTDNEWEXC":"",
+    "MTDREPLACE":"",
+    "MTDOPTNL":"",
+    "MTDAMDPRDONLY":"",
+    "MTDAMDPCDSCLNT":"",
+    "MTDAMDPCLNTINDEP":"",
+    "ATTDECLTYP":0,
+    "ATTDYNAMIC":"",
+    "ATTGETMTD":"",
+    "ATTSETMTD":"",
+    "ATTRDONLY":"",
+    "ATTVALUE":"",
+    "ATTPERSIST":"",
+    "ATTBUSOBJ":"",
+    "ATTKEYFLD":"",
+    "ATTEXPVIRT":0,
+    "EVTDECLTYP":0,
+    "TYPDUMMY":"",
+    "TYPTYPE":0,
+    "TYPE":"",
+    "TABLEOF":"",
+    "SRCROW1":0,
+    "SRCCOLUMN1":0,
+    "SRCROW2":0,
+    "SRCCOLUMN2":0,
+    "REFCLSNAME":"",
+    "REFINTNAME":"",
+    "REFCMPNAME":"",
+    "BCMTDINST":"",
+    "BCMTDCAT":0,
+    "BCMTDDIA":"",
+    "BCMTDCOM":"",
+    "BCMTDSYN":0,
+    "BCEVTCAT":0,
+    "TYPESRC_LENG":0,
+    "TYPESRC":""
+   },
    {
     "CLSNAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS",
     "CMPNAME":"TY_CENTROCUSTO",
@@ -810,6 +875,12 @@
   [
    {
     "CLSNAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS",
+    "CMPNAME":"MAIN_PROCESS",
+    "LANGU":"E",
+    "DESCRIPT":""
+   },
+   {
+    "CLSNAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS",
     "CMPNAME":"TY_CENTROCUSTO",
     "LANGU":"E",
     "DESCRIPT":""
@@ -944,6 +1015,12 @@
     "METHODINDX":1,
     "METHODNAME":"IF_RAP_QUERY_PROVIDER~SELECT",
     "FLAGS":0
+   },
+   {
+    "CLASSNAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS",
+    "METHODINDX":2,
+    "METHODNAME":"MAIN_PROCESS",
+    "FLAGS":0
    }
   ]
  },
@@ -1008,6 +1085,17 @@
    },
    {
     "NAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS=CM001",
+    "VARCL":"X",
+    "DBAPL":"S",
+    "DBNA":"D$",
+    "SUBC":"I",
+    "APPL":"S",
+    "FIXPT":"X",
+    "LDBNAME":"D$S",
+    "UCCHECK":"X"
+   },
+   {
+    "NAME":"/PYXS/CL_ACCOUNTING_DOCUMENTS=CM002",
     "VARCL":"X",
     "DBAPL":"S",
     "DBNA":"D$",
