@@ -1,0 +1,6 @@
+CLASS /pyxs/cl_accounting_documents DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
