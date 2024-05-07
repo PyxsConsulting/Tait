@@ -90,5 +90,21 @@ CLASS /pyxs/cl_accounting_documents DEFINITION
         UtilizacaoLancamento           TYPE p LENGTH 15 DECIMALS 2,
         Parceiro                       TYPE ty_Parceiro,
         TipoLancamentoERP              TYPE string,
-      END OF ty_main.
-      METHODS: main_process.
+      END OF ty_main,
+
+      BEGIN OF ty_sel,
+        companyCode        TYPE i_journalentry-CompanyCode,
+        PostingDate        TYPE RANGE OF i_journalEntry-PostingDate,
+        AccountingDocument TYPE RANGE OF i_journalEntry-AccountingDocument,
+        FiscalYear         TYPE RANGE OF i_JournalEntry-FiscalYear,
+        DocumentType       TYPE RANGE OF i_JournalEntry-AccountingDocumentType,
+        Account            TYPE RANGE OF i_journalEntryItem-GLAccount,
+        finish             TYPE i_journalEntry-AccountingDocumentType,
+        opened             TYPE abap_boolean,
+      END OF ty_Sel,
+      BEGIN OF ty_data,
+        hdr TYPE i_journalentry,
+        itm TYPE I_OperationalAcctgDocItem,
+        cpn TYPE I_CompanyCode,
+      END OF ty_data.
+    METHODS: main_process.

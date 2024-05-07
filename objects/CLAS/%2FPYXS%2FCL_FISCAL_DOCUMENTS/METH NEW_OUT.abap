@@ -225,7 +225,9 @@
           ls_out-parceiro-telefone = ls_parc_nf-phonenumber.
         ENDIF.
       ENDIF.
+      DATA(lv_seq) = 0.
       LOOP AT t_nfitem INTO DATA(ls_itm).
+        lv_seq += 1.
         CLEAR ls_itm_out.
         DATA(p_nflin) = ls_itm-nf.
         IF lv_docnum = ls_itm-nf-br_notafiscal.
@@ -241,8 +243,8 @@
             ls_out-numerolancamentocontabil = ls_bkpf-accountingdocument.
           ENDIF.
         ENDIF.
-
-        ls_itm_out-numerosequencia = ls_itm-nf-br_notafiscalitem.
+        ls_itm_out-numerosequencia = lv_seq.
+        ls_itm_out-codigoreferenciaintegracao = ls_itm-nf-br_notafiscalitem.
         IF ls_itm-nf-material IS NOT INITIAL.
           ls_itm_out-item-codigo = ls_itm-nf-material.
         ELSEIF ls_out-modelo = 'SV'.                                   "BSBU-2710
@@ -297,14 +299,15 @@
         ls_itm_out-unidademedida-descricao = ls_itm-unitofmeasure_e.
         ls_itm_out-item-unidademedida = ls_itm_out-unidademedida.
         ls_itm_out-quantidade = p_nflin-quantityinbaseunit.
-        "ls_itm_out-valorUnidade = p_nflin
+        ls_itm_out-valorUnidade = p_nflin-BR_NFPriceAmountWithTaxes.
         ls_itm_out-valortotal = p_nflin-br_nfvalueamountwithtaxes.
         ls_itm_out-valordescontocomercial = abs( p_nflin-br_nfdiscountamountwithtaxes ).
         ls_itm_out-valorfrete = p_nflin-br_nffreightamountwithtaxes.
         ls_itm_out-valorseguro = p_nflin-br_nfinsuranceamountwithtaxes.
         ls_itm_out-valoroutrasdespesas = p_nflin-br_nfexpensesamountwithtaxes.
-
+        ls_itm_out-codigocontacontabilanalitica = p_nflin-GLAccount.
         ls_itm_out-movimentacaofisica = p_nflin-br_nfisphysicalmvtofmaterial.
+        ls_itm_out-valorcontabil = ( ls_itm_out-valortotal + ls_itm_out-valorfrete + ls_itm_out-valorseguro + ls_itm_out-valoroutrasdespesas ) - ls_itm_out-valordescontocomercial.
 
         DATA: lv_base     TYPE i_br_nftax-br_nfitembaseamount,
               lv_base_oth TYPE i_br_nftax-br_nfitembaseamount,
@@ -353,6 +356,7 @@
                 ls_itm_out-imposto-icmsst-aliquotaICMSST   = lv_rate.
                 ls_itm_out-imposto-icmsst-valorICMSST    = lv_taxval.
               ENDIF.
+              ls_itm_out-valorcontabil += lv_taxval.
 
               IF lv_base_oth IS NOT INITIAL.
                 ls_itm_out-imposto-icmsst-valorICMSSTNaoTributado = lv_taxval.
@@ -373,6 +377,7 @@
                 ls_itm_out-imposto-ipi-aliquotaIPI = lv_rate.
                 ls_itm_out-imposto-ipi-valorIPI  = lv_taxval.
               ENDIF.
+              ls_itm_out-valorcontabil += lv_taxval.
 
               IF lv_base_oth IS NOT INITIAL.
                 ls_itm_out-imposto-ipi-valorNaoTributadoIPI   = lv_taxval.
@@ -430,13 +435,13 @@
               ls_itm_out-imposto-icms-difal-aliquotaICMSDIFAL     = lv_rate.
               ls_itm_out-imposto-icms-difal-valorICMSDIFAL      = lv_taxval.
 
-*            WHEN gc_icms_fcp.
-*              IF lv_base IS NOT INITIAL.
-*                p_doc_item-aliq_icms_fcp     = lv_rate.
-*                p_doc_item-vlr_icms_fcp      = lv_taxval.
-*              ENDIF.
-*
-*              p_doc_fiscal-vlr_fcp         = p_doc_fiscal-vlr_fcp + lv_taxval.
+            WHEN gc_icms_fcp.
+              IF lv_base IS NOT INITIAL.
+                ls_itm_out-imposto-icmsst-percentualFCPST     = lv_rate.
+                ls_itm_out-imposto-icmsst-valorFCPST      = lv_taxval.
+              ENDIF.
+
+              ls_itm_out-valorcontabil += lv_taxval.
 *
 *            WHEN gc_icms_fcp_st.
 *              p_doc_item-vlr_base_icms_fcp_st = lv_base.
@@ -500,6 +505,7 @@
                 ls_itm_out-imposto-ii-aliquotaII            = lv_rate.
                 ls_itm_out-imposto-ii-valorII             = lv_taxval.
               ENDIF.
+              ls_itm_out-valorcontabil += lv_taxval.
             WHEN 'INSS'.
               ls_itm_out-imposto-inss-baseCalculoINSS = lv_base.
               ls_itm_out-imposto-inss-valorINSS = lv_taxval.

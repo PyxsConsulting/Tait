@@ -642,7 +642,7 @@ PUBLIC
 
 
       BEGIN OF ty_cofins,
-        situacaotributariacofins    TYPE string,
+        situacaotributariacofins    TYPE i,
         basecalculocofins           TYPE p LENGTH 15 DECIMALS 2,
         aliquotacofins              TYPE p LENGTH 15 DECIMALS 2,
         quantidadebasecalculocofins TYPE p LENGTH 15 DECIMALS 2,
@@ -654,7 +654,7 @@ PUBLIC
 
 
       BEGIN OF ty_pis,
-        situacaotributariapis    TYPE string,
+        situacaotributariapis    TYPE i,
         basecalculopis           TYPE p LENGTH 15 DECIMALS 2,
         aliquotapis              TYPE p LENGTH 15 DECIMALS 2,
         quantidadebasecalculopis TYPE p LENGTH 15 DECIMALS 2,
@@ -746,8 +746,8 @@ PUBLIC
 
 
       BEGIN OF ty_icms,
-        situacaotributariaicmstaba TYPE string,
-        situacaotributariaicmstabb TYPE string,
+        situacaotributariaicmstaba TYPE i,
+        situacaotributariaicmstabb TYPE i,
         valorbaseicms              TYPE p LENGTH 15 DECIMALS 2,
         aliquotaicms               TYPE p LENGTH 15 DECIMALS 2,
         valoricms                  TYPE p LENGTH 15 DECIMALS 2,
@@ -767,14 +767,14 @@ PUBLIC
 
 
       BEGIN OF ty_imposto,
-        icms   TYPE ty_icms,
-        icmsst TYPE ty_icmsst,
-        ipi    TYPE ty_ipi,
-        pis    TYPE ty_pis,
-        cofins TYPE ty_cofins,
-        issqn  TYPE ty_issqn,
-        ii     TYPE ty_ii,
-        inss   TYPE ty_inss,
+        icms    TYPE ty_icms,
+        icmsst  TYPE ty_icmsst,
+        ipi     TYPE ty_ipi,
+        pis     TYPE ty_pis,
+        cofins  TYPE ty_cofins,
+        issqn   TYPE ty_issqn,
+        ii      TYPE ty_ii,
+        inss    TYPE ty_inss,
       END OF ty_imposto,
 
 
@@ -1041,6 +1041,7 @@ PUBLIC
         notafiscalativo                TYPE string,
         codigoreferenciaintegracao     TYPE string,
         numerolancamentocontabil       TYPE string,
+        CodigoContaAnaliticaContabil   TYPE string,
         categoriadocfiscal             TYPE string,
         indintermediario               TYPE string,
         numeroserieequipamentosat      TYPE string,

@@ -40,4 +40,4 @@
             io_response->set_total_number_of_records( iv_total_number_of_records = 0 ).
         ENDTRY.
     ENDCASE.
-      ENDMETHOD.
+  ENDMETHOD.
