@@ -6,7 +6,7 @@
    {
     "PGMID":"R3TR",
     "OBJECT":"DEVC",
-    "OBJ_NAME":"ZTCO",
+    "OBJ_NAME":"/PYXS/TCO",
     "KORRNUM":"",
     "SRCSYSTEM":"...",
     "AUTHOR":"SAP_CUSTOMER",
@@ -34,7 +34,7 @@
   "data":
   [
    {
-    "DEVCLASS":"ZTCO",
+    "DEVCLASS":"/PYXS/TCO",
     "INTSYS":"",
     "CONSYS":"",
     "CTEXT":"",
@@ -85,7 +85,7 @@
   "data":
   [
    {
-    "DEVCLASS":"ZTCO",
+    "DEVCLASS":"/PYXS/TCO",
     "SPRAS":"E",
     "CTEXT":"TCo"
    }
